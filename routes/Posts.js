@@ -34,18 +34,18 @@ else{
 }
 });
 router.post('/',function(req,res,next){
-
-        Post.addPost(req.body,function(err,count){
-
-            //console.log(req.body);
-            if(err)
-            {
-                res.json(err);
-            }
-            else{
-                    res.json(req.body);//or return count for 1 & 0
-            }
-        });
+        res.json("oi");
+        // Post.addPost(req.body,function(err,count){
+        //
+        //     //console.log(req.body);
+        //     if(err)
+        //     {
+        //         res.json(err);
+        //     }
+        //     else{
+        //             res.json(req.body);//or return count for 1 & 0
+        //     }
+        // });
 });
  router.post('/:id',function(req,res,next){
   Post.deleteAll(req.body,function(err,count){
