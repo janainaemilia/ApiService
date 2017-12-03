@@ -7,6 +7,11 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 var routes = require('./routes/index');
 var Posts=require('./routes/Posts');
+var Categorias=require('./routes/Categorias');
+var Tags=require('./routes/Tags');
+var Midias=require('./routes/Midias');
+var TagPosts=require('./routes/TagPosts');
+
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 So now, you can use http://localhost:5000/resources/myImage.jpg to serve all the images instead of http://localhost:5000/images/myImage.jpg. */
 app.use('/', routes);
 app.use('/Posts',Posts);
+app.use('/Categorias',Categorias);
+app.use('/Tags',Tags);
+app.use('/Midias',Midias);
+app.use('/TagPosts',TagPosts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

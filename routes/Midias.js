@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var Post=require('../models/Post');
+var Midias=require('../models/Midia');
 
 router.get('/:id?',function(req,res,next){
 
 if(req.params.id){
 
-    Post.getPostById(req.params.id,function(err,rows){
+    Midias.getMidiaById(req.params.id,function(err,rows){
 
         if(err)
         {
@@ -19,7 +19,7 @@ if(req.params.id){
 }
 else{
 
- Post.getAllPosts(function(err,rows){
+ Midias.getAllMidias(function(err,rows){
         if(err)
         {
             res.json(err);
@@ -33,7 +33,9 @@ else{
 }
 });
 router.post('/',function(req,res,next){
-        Post.addPost(req.body,function(err,count){
+        Midias.addMidia(req.body,function(err,count){
+
+            //console.log(req.body);
             if(err)
             {
                 res.json(err);
@@ -44,7 +46,7 @@ router.post('/',function(req,res,next){
         });
 });
  router.post('/:id',function(req,res,next){
-  Post.deleteAll(req.body,function(err,count){
+  Midias.deleteAll(req.body,function(err,count){
     if(err)
     {
       res.json(err);
@@ -57,7 +59,7 @@ router.post('/',function(req,res,next){
 });
 router.delete('/:id',function(req,res,next){
 
-        Post.deletePost(req.params.id,function(err,count){
+        Midias.deleteMidia(req.params.id,function(err,count){
 
             if(err)
             {
@@ -72,8 +74,8 @@ router.delete('/:id',function(req,res,next){
 });
 router.put('/:id',function(req,res,next){
 
-    res.json(req.body);
-    Post.updatePost(req.params.id,req.body,function(err,rows){
+    Midias.updateMidia(req.params.id,req.body,function(err,rows){
+
         if(err)
         {
             res.json(err);
