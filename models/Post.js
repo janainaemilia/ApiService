@@ -9,6 +9,7 @@ return db.query("Select * from post " +
                 "inner join itemtagpost on post.idPost = itemtagpost.idPost " +
                 "inner join tagpost on tagpost.idTagPost = itemtagpost.idTagPost " +
                 "left join midia on post.idPost = midia.idPost " +
+                "inner join usuario on usuario.idUsuario = usuario.idUsuario " +
                 "order by post.idPost",callback);
 },
 
@@ -19,13 +20,14 @@ getPostById:function(id,callback){
                     "inner join itemtagpost on post.idPost = itemtagpost.idPost " +
                     "inner join tagpost on tagpost.idTagPost = itemtagpost.idTagPost " +
                     "left join midia on post.idPost = midia.idPost " +
+                    "inner join usuario on usuario.idUsuario = usuario.idUsuario " +
                     "where post.idPost=?" +
                     "order by post.idPost",[id],callback);
 },
 addPost:function(Post,callback){
    console.log("inside service");
    console.log(Post.idPost);
-return db.query("Insert into post(tituloPost, textoPost, dataPost, atualizacaoPost, idCategoriaPost) values(?,?,?,?,?)",[Post.tituloPost, Post.textoPost, Post.dataPost, Post.atualizacaoPost, Post.idCategoriaPost],callback);
+return db.query("Insert into post(tituloPost, textoPost, dataPost, atualizacaoPost, idCategoriaPost, idUsuario) values(?,?,?,?,?,?)",[Post.tituloPost, Post.textoPost, Post.dataPost, Post.atualizacaoPost, Post.idCategoriaPost, Post.idUsuario],callback);
 //return db.query("insert into post(Id,Title,Status) values(?,?,?)",[Post1.Id,Post1.Title,Post1.Status],callback);
 },
 deletePost:function(id,callback){

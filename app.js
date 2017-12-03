@@ -11,6 +11,7 @@ var Categorias=require('./routes/Categorias');
 var Tags=require('./routes/Tags');
 var Midias=require('./routes/Midias');
 var TagPosts=require('./routes/TagPosts');
+var Usuarios=require('./routes/Usuarios');
 
 var app = express();
 // view engine setup
@@ -35,6 +36,7 @@ app.use('/Categorias',Categorias);
 app.use('/Tags',Tags);
 app.use('/Midias',Midias);
 app.use('/TagPosts',TagPosts);
+app.use('/Usuarios',Usuarios);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

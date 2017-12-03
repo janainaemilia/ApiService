@@ -52,17 +52,17 @@ CREATE TABLE IF NOT EXISTS `hackathon`.`post` (
   `dataPost` DATETIME NOT NULL,
   `atualizacaoPost` DATETIME NULL DEFAULT NULL,
   `idCategoriaPost` INT(11) NOT NULL,
-  `usuario_idusuario` INT NOT NULL,
-  PRIMARY KEY (`idPost`),
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idPost`, `dataPost`),
   INDEX `fk_Post_CategoriaPost1_idx` (`idCategoriaPost` ASC),
-  INDEX `fk_post_usuario1_idx` (`usuario_idusuario` ASC),
+  INDEX `fk_post_usuario1_idx` (`idUsuario` ASC),
   CONSTRAINT `fk_Post_CategoriaPost1`
     FOREIGN KEY (`idCategoriaPost`)
     REFERENCES `hackathon`.`categoriapost` (`idCategoriaPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_post_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
+    FOREIGN KEY (`idUsuario`)
     REFERENCES `hackathon`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
